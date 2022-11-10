@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<head>
+    <title>Master mind</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" type="text/javascript"> </script>
+</head>
+<body>
+    <div id="mainContent">
+        <header>
+            <h1>MASTER MIND</h1>
+        </header>
+
+        <div id ="masterMindTable">
+            <table id="table">
+                <tr>
+                    <th><div class="circle"></div></th>
+                    <th><div class="circle"></div></th>
+                    <th><div class="circle"></div></th>
+                    <th><div class="circle"></div></th>
+                </tr>
+                <tr>
+                    <td><div class="redCircle"></div></td>
+                    <td><div class="greenCircle"></div></td>
+                    <td><div class="blueCircle"></div></td>
+                    <td><div class="yellowCircle"></div></td>
+                </tr>
+            </table>
+
+            <div id="input">
+            
+            </div>
+
+        </div>
+
+        
+
+
+        <div id="colorSelector">
+            <div class="redCircleSelector" onclick="addRed()"></div>
+            <div class="greenCircleSelector" onclick="addGreen()"></div>
+            <div class="blueCircleSelector" onclick="addBlue()"></div>
+            <div class="yellowCircleSelector" onclick="addYellow()"></div>
+            <button id="removeColor" onclick="addRed()">&#x2190; DELETE</button>
+        </div>
+
+
+    </div>
+</body> 
