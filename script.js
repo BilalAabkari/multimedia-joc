@@ -114,6 +114,10 @@ function finishGame(){
 
 }
 
+function resetGame(){
+    
+}
+
 function addColor(color){
     if(index == 4){
         //If list is full, alert 
