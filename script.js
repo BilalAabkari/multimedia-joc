@@ -23,13 +23,16 @@ function check(){
                 correctPosition++;
             }
         }
+        var added = false;
         for(i = 0; i<4; i++){ //Then we check only if the colors are correct(for example if there's some green then it has to count as a correct color but not a correct positon)
             if(visited[i] == false){ // If on the other for it wasn't the correct color and positon then we check if it's a correct color.
                 for(j = 0; j<4; j++){
-                    if(gameList[i] == solution[j]){
+                    if(gameList[i] == solution[j] && !added){ //We check if there's the same color and it hasn't been counted/added yet.
+                        added = true;
                         correctColors++; //If there's the same color in some element in the solution we add one to the correctColors counter.
                     }
                 }
+                added = false;
             }
             gameList[i] = ""; //We start to empty the list to optimize.
         }
