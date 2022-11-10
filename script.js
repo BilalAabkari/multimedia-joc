@@ -5,11 +5,6 @@ var correctColors; //Counter for correct colors
 var correctPosition; //Counter for correct colors and correct position
 var index = 0;
 var tries = 0;
-var i;
-var j;
-var table = document.getElementById("table");
-var row;
-var emptyRow;
 
 function check(){
     if(index < 4){
@@ -19,6 +14,8 @@ function check(){
     else{
         tries++;
         //check and show results, restore elements from the list
+        var i;
+        var j;
         var visited = Array(false, false, false, false);
         for(i = 0; i<4; i++){ // Firstly we check if the positons and the colors are correct.
             if(solution[i] == gameList[i]){
@@ -40,7 +37,6 @@ function check(){
         Document.getElementById("correctColors") = correctColors;
         Document.getElementById("correctPosition") = correctPosition;
         index = 0; //Restore elements from the list
-        emtpyRow = false;
         if(tries == 10){
             finishGame();
         }
@@ -51,89 +47,31 @@ function finishGame(){
 
 }
 
-function addGreen(){
+function addColor(color){
     if(index == 4){
         //If list is full, alert 
         window.alert("List is full, remove some elements to add new ones");
     }
     else{
-        if(index == 0 && emptyRow == false){
-            row = table.insertRow();
-        }
-        //Add green
-        var cell = row.insertCell(index);
-        cell.innerHTML = "green";
-        gameList[index] = "green";
-        index++;
-    }
-}
+        var colorClass = color + "Circle";
 
-function addYellow(){
-    if(index == 4){
-        //If list is full, alert 
-        window.alert("List is full, remove some elements to add new ones");
-    }
-    else{
-        //Add yellow
-        if(index == 0 && emptyRow == false){
-            row = table.insertRow();
-        }
-        var cell = row.insertCell(index);
-        cell.innerHTML = "yellow";
-        gameList[index] = "yellow";
-        index++;
-    }
-}
+        var input = document.getElementById("input"); // We assign the "table" (of the elements we add) a var
+        const child = document.createElement("div"); // We create a child. 
+        child.setAttribute("id", "color" + index);
+        child.className = colorClass; // We assign a classname
+        input.appendChild(child); // We insert this child to the "table"
 
-function addBlue(){
-    if(index == 4){
-        //If list is full, alert 
-        window.alert("List is full, remove some elements to add new ones");
-    }
-    else{
-        //Add blue
-        if(index == 0 && emptyRow == false){
-            row = table.insertRow();
-        }
-        var cell = row.insertCell(index);
-        cell.innerHTML = "blue";
-        gameList[index] = "blue";
-        index++;
-    }
-}
-
-function addRed(){
-    if(index == 4){
-        //If list is full, alert 
-        window.alert("List is full, remove some elements to add new ones");
-    }
-    else{
-        //Add red
-        /*if(index == 0 && emptyRow == false){
-            row = table.insertRow();
-            row.insertCell(0);
-            row.insertCell(1);
-            row.insertCell(2);
-            row.insertCell(3);
-        }
-        var cell = row.insertCell(index);
-        cell.innerHTML = "red";*/
-        var input = document.getElementById("input");
-        const color = document.createElement("div");
-        color.className = "redCircle";
-        input.appendChild(color);
-        gameList[index] = "red";
+        gameList[index] = color;
         index++;
     }
 }
 
 function removeColor(){
     if(index > 0){
+        var element = document.getElementById("color" + (index-1));
+        element.remove();
         gameList[index-1] = "";
         index--;
-        if(index == 0){ //We have this to see if we have an empty row created so we don't need to create another one in case we empty the current one.
-            emptyRow = true;
-        }
     }
     else{ //If there's not any element on the list then we pop an alert.
         window.alert("List is empty");
