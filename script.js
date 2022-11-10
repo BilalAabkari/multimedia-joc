@@ -7,6 +7,9 @@ var index = 0;
 var tries = 0;
 var i;
 var j;
+var table = getElementById("table");
+var row;
+var emptyRow;
 
 function check(){
     if(index < 4){
@@ -31,11 +34,13 @@ function check(){
                     }
                 }
             }
+            gameList[i] = ""; //We start to empty the list to optimize.
         }
         //Falta agafar element de la taula i afegir a la solució.
         Document.getElementById("correctColors") = correctColors;
         Document.getElementById("correctPosition") = correctPosition;
         index = 0; //Restore elements from the list
+        emtpyRow = false;
         if(tries == 10){
             finishGame();
         }
@@ -43,7 +48,7 @@ function check(){
 }
 
 function finishGame(){
-    
+
 }
 
 function addGreen(){
@@ -52,7 +57,12 @@ function addGreen(){
         window.alert("List is full, remove some elements to add new ones");
     }
     else{
+        if(index == 0 && emptyRow == false){
+            row = table.insertRow();
+        }
         //Add green
+        var cell = row.insertCell(index);
+        cell.innerHTML = "green";
         gameList[index] = "green";
         index++;
     }
@@ -65,6 +75,11 @@ function addYellow(){
     }
     else{
         //Add yellow
+        if(index == 0 && emptyRow == false){
+            row = table.insertRow();
+        }
+        var cell = row.insertCell(index);
+        cell.innerHTML = "yellow";
         gameList[index] = "yellow";
         index++;
     }
@@ -77,6 +92,11 @@ function addBlue(){
     }
     else{
         //Add blue
+        if(index == 0 && emptyRow == false){
+            row = table.insertRow();
+        }
+        var cell = row.insertCell(index);
+        cell.innerHTML = "blue";
         gameList[index] = "blue";
         index++;
     }
@@ -89,7 +109,29 @@ function addRed(){
     }
     else{
         //Add red
+        if(index == 0 && emptyRow == false){
+            row = table.insertRow();
+            row.insertCell(0);
+            row.insertCell(1);
+            row.insertCell(2);
+            row.insertCell(3);
+        }
+        var cell = row.insertCell(index);
+        cell.innerHTML = "red";
         gameList[index] = "red";
         index++;
+    }
+}
+
+function removeColor(){
+    if(index > 0){
+        gameList[index-1] = "";
+        index--;
+        if(index == 0){ //We have this to see if we have an empty row created so we don't need to create another one in case we empty the current one.
+            emptyRow = true;
+        }
+    }
+    else{ //If there's not any element on the list then we pop an alert.
+        window.alert("List is empty");
     }
 }
