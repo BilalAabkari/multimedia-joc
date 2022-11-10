@@ -7,7 +7,7 @@ var index = 0;
 var tries = 0;
 var i;
 var j;
-var table = getElementById("table");
+var table = document.getElementById("table");
 var row;
 var emptyRow;
 
@@ -109,7 +109,7 @@ function addRed(){
     }
     else{
         //Add red
-        if(index == 0 && emptyRow == false){
+        /*if(index == 0 && emptyRow == false){
             row = table.insertRow();
             row.insertCell(0);
             row.insertCell(1);
@@ -117,7 +117,11 @@ function addRed(){
             row.insertCell(3);
         }
         var cell = row.insertCell(index);
-        cell.innerHTML = "red";
+        cell.innerHTML = "red";*/
+        var input = document.getElementById("input");
+        const color = document.createElement("div");
+        color.className = "redCircle";
+        input.appendChild(color);
         gameList[index] = "red";
         index++;
     }
