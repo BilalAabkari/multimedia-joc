@@ -1,8 +1,6 @@
 var gameList = new Array(4);
 var solution = Array("green", "yellow", "yellow", "blue");
 // yellow yellow yellow green 
-var correctColors; //Counter for correct colors
-var correctPosition; //Counter for correct colors and correct position
 var index = 0;
 var tries = 0;
 
@@ -13,6 +11,8 @@ function check(){
     }
     else{
         tries++;
+        var correctColors = 0; //Counter for correct colors
+        var correctPosition = 0; //Counter for correct colors and correct position
         //check and show results, restore elements from the list
         var i;
         var j;
@@ -23,23 +23,27 @@ function check(){
                 correctPosition++;
             }
         }
-        var added = false;
+        var found = false;
         for(i = 0; i<4; i++){ //Then we check only if the colors are correct(for example if there's some green then it has to count as a correct color but not a correct positon)
             if(visited[i] == false){ // If on the other for it wasn't the correct color and positon then we check if it's a correct color.
-                for(j = 0; j<4; j++){
-                    if(gameList[i] == solution[j] && !added){ //We check if there's the same color and it hasn't been counted/added yet.
-                        added = true;
+                j = 0;
+                while(!found && j < 4){
+                    if(gameList[i] == solution[j] && !visited[j]){ //We check if there's the same color and it hasn't been counted/added yet.
+                        found = true;
                         correctColors++; //If there's the same color in some element in the solution we add one to the correctColors counter.
                     }
+                    j++;
                 }
-                added = false;
+                found = false;
             }
             gameList[i] = ""; //We start to empty the list to optimize.
         }
+        console.log("color i posició correctes: " + correctPosition);
+        console.log("nomes color correcte: " + correctColors);
         //Falta agafar element de la taula i afegir a la solució.
-        Document.getElementById("correctColors") = correctColors;
-        Document.getElementById("correctPosition") = correctPosition;
         index = 0; //Restore elements from the list
+        var input = document.getElementById("input");
+        input.innerHTML = "";
         if(tries == 10){
             finishGame();
         }
