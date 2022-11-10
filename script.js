@@ -4,6 +4,7 @@ var solution = Array("green", "yellow", "yellow", "blue");
 var correctColors; //Counter for correct colors
 var correctPosition; //Counter for correct colors and correct position
 var index = 0;
+var tries = 0;
 var i;
 var j;
 
@@ -13,6 +14,7 @@ function check(){
         window.alert("Not enough elements on the list to compare");
     }
     else{
+        tries++;
         //check and show results, restore elements from the list
         var visited = Array(false, false, false, false);
         for(i = 0; i<4; i++){ // Firstly we check if the positons and the colors are correct.
@@ -30,10 +32,18 @@ function check(){
                 }
             }
         }
+        //Falta agafar element de la taula i afegir a la solució.
         Document.getElementById("correctColors") = correctColors;
         Document.getElementById("correctPosition") = correctPosition;
         index = 0; //Restore elements from the list
+        if(tries == 10){
+            finishGame();
+        }
     }
+}
+
+function finishGame(){
+    
 }
 
 function addGreen(){
