@@ -5,6 +5,54 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+#playerInformation {
+    padding: 2%;
+   
+}
+
+.orangeLine {
+    width: 90%;
+    height: 2px;
+    background-color: rgb(255, 145, 0);
+    margin: 0 auto;
+    
+}
+
+h2 {
+    background-color: rgba(255, 145, 0, 0.2);
+    padding: 1%;
+}
+
+#play {
+    margin-top: 1%;
+    padding: 10px;
+    background-color: rgb(255, 145, 0);
+    color: white;
+    font-size: 110%;
+    width: 10%;
+    transition-duration: 0.4s;
+}
+
+#play:hover {
+    
+    background-color: rgb(255, 255, 255);
+    color: rgb(255, 153, 0);
+}
+
+#gameInfo {
+    padding: 1%;
+    width: 90%;
+    position: relative;
+    margin-left: 5% ;
+}
+
+#wins, #loses {
+    display: inline-block;
+    font-style: italic;
+    font-size: 150%;
+    margin-right: 5%;
+}
+
 #mainContent {
     width: 80%;
     margin: 0 auto;
@@ -13,13 +61,18 @@ body {
 }
 
 header {
-    background-color: rgb(133, 0, 0);
+    background-color: rgb(95, 95, 95);
+    border-bottom: 15px solid rgb(255, 145, 0);
+    margin-bottom: 1%;
 }
 
 h1 {
-    padding: 4%;
+    padding: 2%;
     color: white;
     text-align: center;
+    font-size: 300%;
+    font-style: italic;
+    
 }
 
 #masterMindTable {
@@ -81,6 +134,7 @@ tr, th, td {
     background-color: rgb(230, 214, 0);
     border-radius: 50%;
     margin: 0 auto;
+    
 }
 
 #input {
@@ -101,68 +155,116 @@ tr, th, td {
 }
 
 #check button {
-    background-color: rgb(255, 0, 0);
+    background-color: rgb(255, 145, 0);
     padding: 2%;
     width: 100%;
     height: 100%;
     color:  white;
     margin: 0 auto;
     font-size: 150%;
+    transition-duration: 0.4s;
 }
 
+#check button:hover {
+    background-color: rgb(255, 255, 255);
+    color: rgb(255, 153, 0);
+    width: 105%;
+    height: 105%;
+}
 
 #colorSelector {
-    background-color: rgb(209, 209, 209);
-    width: 60%;
     left: 17%;
     position: fixed;
     bottom: 0%;
+    width: 60%;
+    background-color: rgba(255, 153, 0, 0.2);
     border-radius: 30px;
+    padding: 1%;
     display: flex;
-    align-items: center;
-    padding: 3%;
+    flex-direction: column;
 }
 
+#colors {           
+    display: flex;
+    justify-content: space-between;
+}
+
+#removeColor {
+    width: 10%;
+    background-color:rgb(255, 153, 0);
+    padding: 1%;
+    height: 3%;
+    margin: 0 auto;
+}
+
+#removeColor:hover {
+    background-color:rgb(255, 255, 255);
+    color: black;
+}
 
 .redCircleSelector {
     cursor: pointer;
-    height: 100px;
-    width: 100px;
+    height: 80px;
+    width: 80px;
     background-color: rgb(182, 0, 0);
     border-radius: 50%;
     margin: 0 auto;
+    border: 4px solid black;
+    transition-duration: 0.4s;
 }
 
 .blueCircleSelector {
     cursor: pointer;
-    height: 100px;
-    width: 100px;
+    height: 80px;
+    width: 80px;
     background-color: rgb(61, 40, 255);
     border-radius: 50%;
     margin: 0 auto;
+    border: 4px solid black;
+    transition-duration: 0.4s;
 }
 
 .greenCircleSelector {
     cursor: pointer;
-    height: 100px;
-    width: 100px;
+    height: 80px;
+    width: 80px;
     background-color: rgb(0, 192, 10);
     border-radius: 50%;
     margin: 0 auto;
+    border: 4px solid black;
+    transition-duration: 0.4s;
 }
 
 .yellowCircleSelector {
     cursor: pointer;
-    height: 100px;
-    width: 100px;
+    height: 80px;
+    width: 80px;
     background-color: rgb(230, 214, 0);
     border-radius: 50%;
     margin: 0 auto;
+    border: 4px solid black;
+    transition-duration: 0.4s;
 }
 
-#removeColor {
-    padding: 1%;
-    width: 10%;
-    height: 3%;
-    margin-right: 2%;
+
+.redCircleSelector:hover {
+    height: 100px;
+    width: 100px;
 }
+
+.blueCircleSelector:hover {
+    height: 100px;
+    width: 100px;
+}
+
+.greenCircleSelector:hover {
+    height: 100px;
+    width: 100px;
+}
+
+.yellowCircleSelector:hover {
+    height: 100px;
+    width: 100px;
+}
+
+

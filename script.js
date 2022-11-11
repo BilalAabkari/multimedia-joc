@@ -1,6 +1,6 @@
 var gameList = new Array(4);
 var solution = Array("green", "yellow", "yellow", "blue");
-// yellow yellow yellow yellow 
+// yellow yellow yellow green 
 var index = 0;
 var tries = 0;
 
@@ -36,12 +36,12 @@ function check(){
                 }
                 found = false;
             }
+            gameList[i] = ""; //We start to empty the list to optimize.
         }
-        updateTable(correctColors, correctPosition);
-        
-        //Restore elements from the list
-        index = 0; 
-
+        console.log("color i posició correctes: " + correctPosition);
+        console.log("nomes color correcte: " + correctColors);
+        //Falta agafar element de la taula i afegir a la solució.
+        index = 0; //Restore elements from the list
         var input = document.getElementById("input");
         input.innerHTML = "";
         if(tries == 10){
@@ -50,72 +50,8 @@ function check(){
     }
 }
 
-function updateTable(correctColors, correctPosition){
-    var table = document.getElementById("table");
-    var row = table.insertRow(-1);
-    var color1 = row.insertCell(0);
-    var color2 = row.insertCell(1);
-    var color3 = row.insertCell(2);
-    var color4 = row.insertCell(3);
-    var space = row.insertCell(4);
-    var correctColorPos = row.insertCell(5);
-    var greenCheck = row.insertCell(6);
-    var correctColor = row.insertCell(7);
-    var orangeCheck = row.insertCell(8);
-    /*var color1HTML = "<div class='" + gameList[0] + "Circle'> </div>";
-    const child = document.createElement("div");
-    child.className = gameList[0] + "Circle";
-    color1.appendChild(child);
-    color1.innerHTML(color1HTML);*/
-
-    //Color1
-    var colorClass = gameList[0] + "Circle";
-    child = document.createElement("div"); // We create a child. 
-    child.setAttribute("id", "color" + index);
-    child.className = colorClass; // We assign a classname
-    color1.appendChild(child); // We insert this child to the "table"
-
-    //Color2
-    colorClass = gameList[1] + "Circle";
-    child = document.createElement("div"); // We create a child. 
-    child.setAttribute("id", "color" + index);
-    child.className = colorClass; // We assign a classname
-    color2.appendChild(child); // We insert this child to the "table"
-
-    //Color3
-    colorClass = gameList[2] + "Circle";
-    child = document.createElement("div"); // We create a child. 
-    child.setAttribute("id", "color" + index);
-    child.className = colorClass; // We assign a classname
-    color3.appendChild(child); // We insert this child to the "table"
-
-    //Color4
-    colorClass = gameList[3] + "Circle";
-    child = document.createElement("div"); // We create a child. 
-    child.setAttribute("id", "color" + index);
-    child.className = colorClass; // We assign a classname
-    color4.appendChild(child); // We insert this child to the "table"
-
-    //space it's an empty cell
-
-    //correctColorPos
-    correctColorPos.innerHTML = "<div>" + correctPosition + "</div>";
-
-    //greenCheck
-    greenCheck.innerHTML = "<img class='checkIcon' src='greenCheck.png'></img>";
-    //correctColor
-    correctColor.innerHTML = "<div>" + correctColors + "</div>";
-
-    //OrangeCheck
-    orangeCheck.innerHTML = "<img class='checkIcon' src='orangeCheck.png'></img>";
-}
-
 function finishGame(){
 
-}
-
-function resetGame(){
-    
 }
 
 function addColor(color){

@@ -7,10 +7,25 @@
     <script src="script.js" type="text/javascript"> </script>
 </head>
 <body>
+
+    
     <div id="mainContent">
         <header>
             <h1>MASTER MIND</h1>
         </header>
+
+        <div id="playerInformation">
+            <h2>PLAYER INFORMATION</h2>
+            <label>Name </label><input type="text" id="nameInput"><br>
+            <input type="button" id="play" value="Play!" onclick="play()">
+        </div>
+
+        <div id="gameInfo">
+            <p id="wins">Wins:</p>
+            <p id="loses">Loses:</p>
+        </div>
+
+        <div class="orangeLine"></div><br><br>
 
         <div id ="masterMindTable">
             <table id="table">
@@ -26,6 +41,7 @@
                     <td><div class="blueCircle"></div></td>
                     <td><div class="yellowCircle"></div></td>
                 </tr>
+                
             </table>
 
             <div id="input">            
@@ -37,10 +53,12 @@
         </div>
 
         <div id="colorSelector">
-            <div class="redCircleSelector" onclick="addColor('red')"></div>
-            <div class="greenCircleSelector" onclick="addColor('green')"></div>
-            <div class="blueCircleSelector" onclick="addColor('blue')"></div>
-            <div class="yellowCircleSelector" onclick="addColor('yellow')"></div>
+            <div id="colors">
+                <div class="redCircleSelector" onclick="addColor('red')"></div>
+                <div class="greenCircleSelector" onclick="addColor('green')"></div>
+                <div class="blueCircleSelector" onclick="addColor('blue')"></div>
+                <div class="yellowCircleSelector" onclick="addColor('yellow')"></div>
+            </div>
             <button id="removeColor" onclick="removeColor()">&#x2190; DELETE</button>
         </div>
 
