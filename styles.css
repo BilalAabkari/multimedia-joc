@@ -21,7 +21,11 @@ body {
 h2 {
     background-color: rgba(255, 145, 0, 0.2);
     padding: 1%;
+    width: 90%;
+    margin: 0 auto;
 }
+
+
 
 #play {
     margin-top: 1%;
@@ -43,7 +47,8 @@ h2 {
     padding: 1%;
     width: 90%;
     position: relative;
-    margin-left: 5% ;
+    margin-left: 5%;
+    display: none;
 }
 
 #wins, #loses {
@@ -78,23 +83,42 @@ h1 {
 #masterMindTable {
     margin: 0 auto;
     width: 50%;
+    display: none;
 }
 
 #masterMindTable table {
     margin: 0 auto;
     width: 80%;
-    border: 1px solid black;
-
+    
 }
 
 #masterMindTable table  {
     width: 20%;
 }
 
-tr, th, td {
-    border: 1px solid black;
+#leaderboard {
+    padding: 10px;
+    position: fixed;
+    top: 30%;
+    right: 5%;
+    border: 1px solid;
+    border-collapse: collapse;
+    background-color: rgb(255, 145, 0);
+    border-color: rgb(255, 145, 0);
+    color: white;
+    display: none;
 }
 
+#leaderboard th {
+    background-color: rgb(180, 102, 0);
+    border: 1px solid;
+    padding: 10px;
+}
+
+#leaderboard td {
+    border: 1px solid;
+    padding: 10px;
+}
 
 .circle {
     height: 20px;
@@ -137,6 +161,11 @@ tr, th, td {
     
 }
 
+.checkIcon {
+    width: 20px;
+    height: 20px;
+}
+
 #input {
     border: 1px solid black;
     width: 20%;
@@ -152,6 +181,7 @@ tr, th, td {
     width: 20%;
     height: 4%;
     margin: 0 auto;
+    display: none;
 }
 
 #check button {
@@ -180,7 +210,7 @@ tr, th, td {
     background-color: rgba(255, 153, 0, 0.2);
     border-radius: 30px;
     padding: 1%;
-    display: flex;
+    display: none;
     flex-direction: column;
 }
 

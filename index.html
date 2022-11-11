@@ -13,9 +13,10 @@
         <header>
             <h1>MASTER MIND</h1>
         </header>
+        
+        <h2 id="name">PLAYER NAME</h2>
 
-        <div id="playerInformation">
-            <h2>PLAYER INFORMATION</h2>
+        <div id="playerInformation">            
             <label>Name </label><input type="text" id="nameInput"><br>
             <input type="button" id="play" value="Play!" onclick="play()">
         </div>
@@ -34,14 +35,7 @@
                     <th><div class="circle"></div></th>
                     <th><div class="circle"></div></th>
                     <th><div class="circle"></div></th>
-                </tr>
-                <tr>
-                    <td><div class="redCircle"></div></td>
-                    <td><div class="greenCircle"></div></td>
-                    <td><div class="blueCircle"></div></td>
-                    <td><div class="yellowCircle"></div></td>
-                </tr>
-                
+                </tr>                
             </table>
 
             <div id="input">            
@@ -62,6 +56,16 @@
             <button id="removeColor" onclick="removeColor()">&#x2190; DELETE</button>
         </div>
 
+        <table id="leaderboard">
+            <tr>
+                <th colspan="3">Leaderboard</th>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <th>Result</div></th>
+                <th>Tries</div></th>
+            </tr>  
+        </table>
 
     </div>
 </body> 

@@ -4,6 +4,19 @@ var solution = Array("green", "yellow", "yellow", "blue");
 var index = 0;
 var tries = 0;
 
+
+function play() {
+    var name = document.getElementById("nameInput").value;
+    document.getElementById("name").innerText = name;
+    document.getElementById("playerInformation").style.display = "none";
+    document.getElementById("gameInfo").style.display = "block";
+    document.getElementById("masterMindTable").style.display = "block";
+    document.getElementById("check").style.display = "block";
+    document.getElementById("colorSelector").style.display = "flex";
+    document.getElementById("leaderboard").style.display = "block";    
+}
+
+
 function check(){
     if(index < 4){
         //Not enough elements on the list to compare
