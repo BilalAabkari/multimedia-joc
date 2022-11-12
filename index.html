@@ -18,12 +18,15 @@
 
         <div id="playerInformation">            
             <label>Name </label><input type="text" id="nameInput"><br>
+            <h4>Repeat colors?</h4>
+            <input type="radio" id="repeatedColors" name="repeat" value="yes"><label>Yes!!!</label><br>
+            <input type="radio" id="noRepeatedColors" name="repeat" value="no"><label>No, too hard...</label><br>
             <input type="button" id="play" value="Play!" onclick="play()">
         </div>
 
         <div id="gameInfo">
-            <p id="wins">Wins:</p>
-            <p id="loses">Loses:</p>
+            <p id="wins">Wins: 0</p>
+            <p id="loses">Loses: 0</p>
         </div>
 
         <div class="orangeLine"></div><br><br>

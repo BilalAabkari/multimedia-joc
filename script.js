@@ -1,21 +1,55 @@
+var colorsAllowed = Array("green", "yellow", "blue", "red");
 var gameList = new Array(4);
-var solution = Array("green", "yellow", "yellow", "blue");
+var solution = Array(4);
 // yellow yellow yellow yellow 
 var index = 0;
 var tries = 0;
+var wins = 0;
+var loses = 0;
+var repeatColors; //it's value will be "repeat" if the user wants repeated colors allowed, or noRepeat otherwise
+var username; //name of the user
 
 
 function play() {
-    var name = document.getElementById("nameInput").value;
-    document.getElementById("name").innerText = name;
+    username = document.getElementById("nameInput").value;
+    document.getElementById("name").innerText = username;
     document.getElementById("playerInformation").style.display = "none";
     document.getElementById("gameInfo").style.display = "block";
     document.getElementById("masterMindTable").style.display = "block";
     document.getElementById("check").style.display = "block";
     document.getElementById("colorSelector").style.display = "flex";
-    document.getElementById("leaderboard").style.display = "block";    
+    document.getElementById("leaderboard").style.display = "block";
+    
+    if (document.getElementById("repeatedColors").checked) {
+        repeatColors = "repeat";
+    }
+    else {
+        repeatColors = "noRepeat";
+    }
+    shuffle(repeatColors);
 }
 
+function shuffle(repeated) {
+    if (repeated === "noRepeat") {
+        //shuffle with no repetitions        
+        var colors = Array("green", "yellow", "blue", "red");
+        for (var i = 3; i >= 0; i--) {
+            var index = Math.floor(Math.random() * colors.length); //Random number between 0 and colors.lenght-1
+            solution[3-i] = colors[index];
+            colors.splice(index, 1);
+        }
+
+    }
+    else {
+        //shuffle with repetitions
+        for (var i = 0; i < 4; i++) {
+            var index = Math.floor(Math.random() * colorsAllowed.length); //Random number between 0 and 3
+            solution[i] = colorsAllowed[index];
+        }
+    }
+
+    console.log(solution[0] + " " + solution[1] + " " + solution[2] + " " + solution[3]);
+}
 
 function check(){
     if(index < 4){
@@ -31,17 +65,17 @@ function check(){
         var j;
         var visited = Array(false, false, false, false);
         for(i = 0; i<4; i++){ // Firstly we check if the positons and the colors are correct.
-            if(solution[i] == gameList[i]){
+            if(solution[i] === gameList[i]){
                 visited[i] = true;
                 correctPosition++;
             }
         }
         var found = false;
         for(i = 0; i<4; i++){ //Then we check only if the colors are correct(for example if there's some green then it has to count as a correct color but not a correct positon)
-            if(visited[i] == false){ // If on the other for it wasn't the correct color and positon then we check if it's a correct color.
+            if(visited[i] === false){ // If on the other for it wasn't the correct color and positon then we check if it's a correct color.
                 j = 0;
                 while(!found && j < 4){
-                    if(gameList[i] == solution[j] && !visited[j]){ //We check if there's the same color and it hasn't been counted/added yet.
+                    if(gameList[i] === solution[j] && !visited[j]){ //We check if there's the same color and it hasn't been counted/added yet.
                         found = true;
                         correctColors++; //If there's the same color in some element in the solution we add one to the correctColors counter.
                     }
@@ -51,14 +85,12 @@ function check(){
             }
         }
         updateTable(correctColors, correctPosition);
-        
-        //Restore elements from the list
+        var input = document.getElementById("input"); //Clear the input field
+        //Empty the input list
         index = 0; 
-
-        var input = document.getElementById("input");
         input.innerHTML = "";
-        if(tries == 10){
-            finishGame();
+        if(tries === 9 || correctPosition === 4){
+            finishGame(correctPosition);
         }
     }
 }
@@ -123,7 +155,40 @@ function updateTable(correctColors, correctPosition){
     orangeCheck.innerHTML = "<img class='checkIcon' src='orangeCheck.png'></img>";
 }
 
-function finishGame(){
+function finishGame(correctPosition){
+    if (correctPosition === 4) {
+        wins++;
+        document.getElementById("wins").innerText = "Wins: " + wins;
+        alert("YOU WON WITH " + tries + " TRIES!!!");
+    }
+    else {
+        loses++,
+        document.getElementById("loses").innerText = "Loses: " + loses;
+        alert("YOU LOST FOR TOO MANY TRIES... TRY AGAIN!");
+    }    
+
+    
+    shuffle(repeatColors);
+    var masterTable = document.getElementById("table");
+    for (var i = 1; i < table.rows.length; i++) { //Delete all rows except the headers (the green circles)
+        table.deleteRow(i);
+    }
+    table.deleteRow(1);
+    
+    leaderBoard = document.getElementById("leaderboard");
+    var row = leaderBoard.insertRow(-1);
+    var cellUsername = row.insertCell(0);
+    var result = row.insertCell(1);
+    var cellTries = row.insertCell(2);
+    cellUsername.innerText = username;
+    if (correctPosition === 4) {
+        result.innerText = "Win";
+    }
+    else {
+        result.innerText = "Lost";
+    }
+    cellTries.innerText = tries + "";
+    tries = 0;
 
 }
 
