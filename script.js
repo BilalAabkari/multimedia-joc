@@ -2,7 +2,7 @@ var colorsAllowed = Array("green", "yellow", "blue", "red");
 var gameList = new Array(4);
 var solution = Array(4);
 // yellow yellow yellow yellow 
-var index = 0;
+var index = 0; //This index will track the current input of the user
 var tries = 0;
 var wins = 0;
 var loses = 0;
@@ -11,8 +11,10 @@ var username; //name of the user
 
 
 function play() {
+
+    //Here we hide the player info input an unhide the game tables and game info
     username = document.getElementById("nameInput").value;
-    document.getElementById("name").innerText = username;
+    document.getElementById("name").innerText = username; //Place the username
     document.getElementById("playerInformation").style.display = "none";
     document.getElementById("gameInfo").style.display = "block";
     document.getElementById("masterMindTable").style.display = "block";
@@ -24,12 +26,13 @@ function play() {
         repeatColors = "repeat";
     }
     else {
-        repeatColors = "noRepeat";
+        repeatColors = "noRepeat"; //THE DEFAULT IS noRepeat
     }
     shuffle(repeatColors);
 }
 
 function shuffle(repeated) {
+    //This function generates the solution
     if (repeated === "noRepeat") {
         //shuffle with no repetitions        
         var colors = Array("green", "yellow", "blue", "red");
@@ -48,8 +51,8 @@ function shuffle(repeated) {
         }
     }
 
-    console.log(solution[0] + " " + solution[1] + " " + solution[2] + " " + solution[3]);
-}
+    console.log(solution[0] + " " + solution[1] + " " + solution[2] + " " + solution[3]); //We show the solution at the console for testing teacher.
+} 
 
 function check(){
     if(index < 4){
@@ -84,7 +87,9 @@ function check(){
                 found = false;
             }
         }
+
         updateTable(correctColors, correctPosition);
+
         var input = document.getElementById("input"); //Clear the input field
         //Empty the input list
         index = 0; 
@@ -107,36 +112,32 @@ function updateTable(correctColors, correctPosition){
     var greenCheck = row.insertCell(6);
     var correctColor = row.insertCell(7);
     var orangeCheck = row.insertCell(8);
-    /*var color1HTML = "<div class='" + gameList[0] + "Circle'> </div>";
-    const child = document.createElement("div");
-    child.className = gameList[0] + "Circle";
-    color1.appendChild(child);
-    color1.innerHTML(color1HTML);*/
+
 
     //Color1
     var colorClass = gameList[0] + "Circle";
-    child = document.createElement("div"); // We create a child. 
+    child = document.createElement("div"); // We create a child which is the first color
     child.setAttribute("id", "color" + index);
     child.className = colorClass; // We assign a classname
     color1.appendChild(child); // We insert this child to the "table"
 
     //Color2
     colorClass = gameList[1] + "Circle";
-    child = document.createElement("div"); // We create a child. 
+    child = document.createElement("div"); // We create a child which is the second color
     child.setAttribute("id", "color" + index);
     child.className = colorClass; // We assign a classname
     color2.appendChild(child); // We insert this child to the "table"
 
     //Color3
     colorClass = gameList[2] + "Circle";
-    child = document.createElement("div"); // We create a child. 
+    child = document.createElement("div"); // We create a child which is third first color
     child.setAttribute("id", "color" + index);
     child.className = colorClass; // We assign a classname
     color3.appendChild(child); // We insert this child to the "table"
 
     //Color4
     colorClass = gameList[3] + "Circle";
-    child = document.createElement("div"); // We create a child. 
+    child = document.createElement("div"); // We create a child which is the forth color
     child.setAttribute("id", "color" + index);
     child.className = colorClass; // We assign a classname
     color4.appendChild(child); // We insert this child to the "table"
@@ -158,12 +159,12 @@ function updateTable(correctColors, correctPosition){
 function finishGame(correctPosition){
     
     var masterTable = document.getElementById("table");
-    for (let i = table.rows.length-1; i >= 1; i--) { //Delete all rows except the headers (the green circles)
+    for (let i = table.rows.length-1; i >= 1; i--) { //Delete all rows except the headers (those green circles)
         table.deleteRow(i);
     }
 
 
-    //upadate leaderboard
+    //update leaderboard
     leaderBoard = document.getElementById("leaderboard");
     var row = leaderBoard.insertRow(-1);
     var cellUsername = row.insertCell(0);
@@ -178,6 +179,7 @@ function finishGame(correctPosition){
     }
     cellTries.innerText = tries + "";
     
+    //shuffle again for new game
     shuffle(repeatColors);    
 
 
@@ -191,15 +193,11 @@ function finishGame(correctPosition){
         document.getElementById("loses").innerText = "Loses: " + loses;
         alert("YOU LOST FOR TOO MANY TRIES... TRY AGAIN!");
     }    
-    tries = 0;
-    
+    tries = 0;  //Resert the tries
     
 
 }
 
-function resetGame(){
-    
-}
 
 function addColor(color){
     if(index == 4){
