@@ -156,25 +156,14 @@ function updateTable(correctColors, correctPosition){
 }
 
 function finishGame(correctPosition){
-    if (correctPosition === 4) {
-        wins++;
-        document.getElementById("wins").innerText = "Wins: " + wins;
-        alert("YOU WON WITH " + tries + " TRIES!!!");
-    }
-    else {
-        loses++,
-        document.getElementById("loses").innerText = "Loses: " + loses;
-        alert("YOU LOST FOR TOO MANY TRIES... TRY AGAIN!");
-    }    
-
     
-    shuffle(repeatColors);
     var masterTable = document.getElementById("table");
-    for (var i = 1; i < table.rows.length; i++) { //Delete all rows except the headers (the green circles)
+    for (let i = table.rows.length-1; i >= 1; i--) { //Delete all rows except the headers (the green circles)
         table.deleteRow(i);
     }
-    table.deleteRow(1);
-    
+
+
+    //upadate leaderboard
     leaderBoard = document.getElementById("leaderboard");
     var row = leaderBoard.insertRow(-1);
     var cellUsername = row.insertCell(0);
@@ -188,7 +177,23 @@ function finishGame(correctPosition){
         result.innerText = "Lost";
     }
     cellTries.innerText = tries + "";
+    
+    shuffle(repeatColors);    
+
+
+    if (correctPosition === 4) {
+        wins++;
+        document.getElementById("wins").innerText = "Wins: " + wins;
+        alert("YOU WON WITH " + tries + " TRIES!!!");
+    }
+    else {
+        loses++,
+        document.getElementById("loses").innerText = "Loses: " + loses;
+        alert("YOU LOST FOR TOO MANY TRIES... TRY AGAIN!");
+    }    
     tries = 0;
+    
+    
 
 }
 
